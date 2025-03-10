@@ -7,7 +7,7 @@ if Data and Data:IsA("StringValue") then
         local WallsBuilt = decodedProgress.Fort.BuildWalls
         if WallsBuilt then
             local Needed = 1501 - tonumber(WallsBuilt)
-            if Needed >= 1501 then
+            if Needed <= 1501 then
               game:GetService("StarterGui"):SetCore("SendNotification", {
                     Title = "Auto Spawn Wall",
                     Text = "You have built more than enough walls!",
