@@ -52,13 +52,13 @@ UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
     end
 end)
 
---[[game:GetService("StarterGui"):SetCore("SendNotification", {
+game:GetService("StarterGui"):SetCore("SendNotification", {
     Title = "Soul Bank",
     Text = "Made by Yours truly ❤",
-    Button1 = "💗",
+    --Button1 = "💗",
 	--Icon = "rbxassetid://228648904",
     Duration = 2
-})]]
+})
 
 repeat
     task.wait()
