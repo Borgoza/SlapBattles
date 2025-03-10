@@ -1,5 +1,5 @@
 -- Note: delete soon
-if game.PlaceId ~= 102908326578005 and game.PlaceId ~= 7234087065 and game.PlaceId == 6403373529 then
+if game.PlaceId ~= 102908326578005 and game.PlaceId ~= 7234087065 then
 	
 	game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Teleporting"; Text = "Teleporting you to barzil"; Duration = 3;})
 	task.wait(1)
