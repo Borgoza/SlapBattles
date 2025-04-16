@@ -2,10 +2,9 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 repeat wait() until game.Players.LocalPlayer
+if game.PlaceId ~= 6403373529 then return end
 
 local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
-
-if game.PlaceId ~= 6403373529 then return end
 currentSlaps = game.Players.LocalPlayer.leaderstats.Slaps.Value
 
 local RJ = function()
@@ -62,6 +61,7 @@ end
 
 if not CandyCornSet.Time then CandyCornSet.Time = 1 end
 repeat wait() game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Lobby.Teleport1.CFrame until game.Players.LocalPlayer.Character:FindFirstChild("entered") 
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 9999, 0)
 spawn(function()
     while wait() do
         for i, v in pairs(workspace.Arena.island5.Slapples:GetChildren()) do
@@ -71,14 +71,13 @@ spawn(function()
         end
     end
 end)
-wait(1)
+wait(2)
 updatedSlaps = game.Players.LocalPlayer.leaderstats.Slaps.Value
-nowSlaps = updatedSlaps - currentSlaps
 
-if updatedSlaps > currentSlaps then
+if updatedSlaps > currentSlaps and updatedSlaps >= 10 then
     -- if it actually increases
     local embed = {
-        ['description'] = "Current slap count **".. updatedSlaps .."** (increased by "..nowSlaps.." Slaps!)",
+        ['description'] = "Current slap count **".. nowSlaps .."** (increased by **"..nowSlaps.."** Slaps!)",
         ["type"] = "rich",
         ["color"] = 0x2fd44a,
         ["footer"] = {
