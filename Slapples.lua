@@ -75,10 +75,10 @@ wait(2)
 updatedSlaps = game.Players.LocalPlayer.leaderstats.Slaps.Value
 local nowSlaps = updatedSlaps - currentSlaps
 
-if updatedSlaps > currentSlaps and nowSlaps >= 10 then
-    -- if it actually increases
+if updatedSlaps > currentSlaps and nowSlaps >= 15 then
+    -- if it actually increases more than 15
     local embed = {
-        ['description'] = "Current slap count **".. updatedSlaps .."** (increased by **"..nowSlaps.."** Slaps!)",
+        ['description'] = "Current slap count: **".. updatedSlaps .."** (increased by **"..nowSlaps.."** Slaps!)",
         ["type"] = "rich",
         ["color"] = 0x2fd44a,
         ["footer"] = {
