@@ -61,7 +61,7 @@ end
 
 if not CandyCornSet.Time then CandyCornSet.Time = 1 end
 repeat wait() game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Lobby.Teleport1.CFrame until game.Players.LocalPlayer.Character:FindFirstChild("entered") 
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 9999, 0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9.99, -255.176, 5.771)
 spawn(function()
     while wait() do
         for i, v in pairs(workspace.Arena.island5.Slapples:GetChildren()) do
@@ -71,26 +71,17 @@ spawn(function()
         end
     end
 end)
-wait(2)
+wait(1.15)
 updatedSlaps = game.Players.LocalPlayer.leaderstats.Slaps.Value
 local nowSlaps = updatedSlaps - currentSlaps
 
 if updatedSlaps > currentSlaps and nowSlaps >= 15 then
-    -- if it actually increases more than 15
-    local embed = {
-        ['description'] = "Current slap count: **".. updatedSlaps .."** (increased by **"..nowSlaps.."** Slaps!)",
-        ["type"] = "rich",
-        ["color"] = 0x2fd44a,
-        ["footer"] = {
-            text = game.Players.LocalPlayer.Name,
-        }
-    }
-    httprequest({
-         Url = 'https://discord.com/api/webhooks/1362073329111925027/0Sk5Jco23kwPKe1683lLTFXkRpi-aW-e84eAqBfG5Cka6H_7Kq-w4hJ-1REWyO-VLSCK',
-         Headers = {['Content-Type'] = 'application/json'},
-         Body = game:GetService("HttpService"):JSONEncode({['embeds'] = {embed}, ['content'] = ''}),
-         Method = "POST"
-    })
+	httprequest({
+		Url = '',
+		Headers = {['Content-Type'] = 'application/json'},
+		Body = game:GetService("HttpService"):JSONEncode({['content'] = 'Current slap count for '.. game.Players.LocalPlayer.Name ..': **'.. updatedSlaps ..'** Slaps\n-# (increased by **'..nowSlaps..'** Slaps!)'}),
+		Method = "POST"
+	})
 end
 wait(CandyCornSet.Time)
 RJ()
