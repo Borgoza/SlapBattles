@@ -78,7 +78,7 @@ local nowSlaps = updatedSlaps - currentSlaps
 if updatedSlaps > currentSlaps and nowSlaps >= 10 then
     -- if it actually increases
     local embed = {
-        ['description'] = "Current slap count **".. nowSlaps .."** (increased by **"..nowSlaps.."** Slaps!)",
+        ['description'] = "Current slap count **".. updatedSlaps .."** (increased by **"..nowSlaps.."** Slaps!)",
         ["type"] = "rich",
         ["color"] = 0x2fd44a,
         ["footer"] = {
