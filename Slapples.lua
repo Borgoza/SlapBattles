@@ -73,8 +73,9 @@ spawn(function()
 end)
 wait(2)
 updatedSlaps = game.Players.LocalPlayer.leaderstats.Slaps.Value
+local nowSlaps = updatedSlaps - currentSlaps
 
-if updatedSlaps > currentSlaps and updatedSlaps >= 10 then
+if updatedSlaps > currentSlaps and nowSlaps >= 10 then
     -- if it actually increases
     local embed = {
         ['description'] = "Current slap count **".. nowSlaps .."** (increased by **"..nowSlaps.."** Slaps!)",
