@@ -309,10 +309,6 @@ CreateElement("Image", function(ImageID)
 		BackgroundTransparency = 1
 	})
 
-	if GetIcon(ImageID) ~= nil then
-		ImageNew.Image = GetIcon(ImageID)
-	end	
-
 	return ImageNew
 end)
 
@@ -725,10 +721,6 @@ function OrionLib:MakeWindow(WindowConfig)
 				Name = "Title"
 			}), "Text")
 		})
-
-		if GetIcon(TabConfig.Icon) ~= nil then
-			TabFrame.Ico.Image = GetIcon(TabConfig.Icon)
-		end	
 
 		local Container = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255, 255, 255), 5), {
 			Size = UDim2.new(1, -150, 1, -50),
