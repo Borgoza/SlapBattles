@@ -1,5 +1,24 @@
 local Data = game.ReplicatedStorage.PlayerData[game.Players.LocalPlayer.Name].GloveMasteryProgress
 
+if not fireclickdetector or not firetouchinterest then
+    warn("Not Compatible!")
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Auto Fort Mastery",
+        Text = "Your exploit is incompatible for this script!",
+        Duration = 3
+    })
+    return
+end
+
+if game.Players.LocalPlayer.leaderstats.Slaps.Value >= 1075 then
+    warn("Not enough slaps")
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Auto Fort Mastery",
+        Text = "You do not own Fort!",
+        Duration = 3
+    })
+end
+
 if Data and Data:IsA("StringValue") then
     local Progress = Data.Value
     if Progress then
@@ -9,7 +28,7 @@ if Data and Data:IsA("StringValue") then
             local Needed = 1501 - tonumber(WallsBuilt)
             if Needed <= 1501 then
               game:GetService("StarterGui"):SetCore("SendNotification", {
-                    Title = "Auto Spawn Wall",
+                    Title = "Auto Fort Mastery",
                     Text = "You have built more than enough walls!",
                     Duration = 3
                 })
@@ -30,6 +49,33 @@ if Data and Data:IsA("StringValue") then
             task.wait(1)
             for i = 1, Needed do
                 game.ReplicatedStorage.Fortlol:FireServer()
+                for _, obj in pairs(game.Workspace:GetDescendants()) do
+            		if obj:IsA("BasePart") and obj.Name == "Part" and obj.Parent == game.Workspace then
+            			local touchTransmitter = obj:FindFirstChildOfClass("TouchTransmitter")
+            			if touchTransmitter then
+            				table.insert(parts, obj)
+            			end
+            		end
+            	end
+            
+            
+            	for _, part in ipairs(parts) do
+            		local args = {
+            				[1] = {
+            					["Direction"] = Vector3.new(0, 0.009999999776482582, 0),
+            					["Force"] = -5
+            				}
+            			}
+            
+            		game:GetService("ReplicatedStorage").SelfKnockback:FireServer(unpack(args))
+                    firetouchinterest(part)
+            		local originalCFrame = part.CFrame
+            		--[[ Alternative Solution, but trying firetouchinterest first
+                    part.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            		part.CanCollide = false
+            		task.wait(0.5)
+            		part.CFrame = originalCFrame]]
+            	end
 
                 local updatedData = game.ReplicatedStorage.PlayerData[game.Players.LocalPlayer.Name].GloveMasteryProgress.Value
                 local updatedProgress = game:GetService("HttpService"):JSONDecode(updatedData)
@@ -37,16 +83,16 @@ if Data and Data:IsA("StringValue") then
                 local TextNeeded = 1500 - tonumber(WallsBuilt)
                 if WallsBuilt >= 1500 then
                   game:GetService("StarterGui"):SetCore("SendNotification", {
-                    Title = "Auto Spawn Wall",
+                    Title = "Auto Fort Mastery",
                     Text = "Complete",
                     Duration = 3
                 })
-                  game.Player.LocalPlayer:Kick("1500 Walls spawned, Kicked to avoid suspicion")
+                  game.Player.LocalPlayer:Kick("1500 Walls built, Kicked to avoid suspicion")
                   return
                 end
 
                 game:GetService("StarterGui"):SetCore("SendNotification", {
-                    Title = "Auto Spawn Wall",
+                    Title = "Auto Fort Mastery",
                     Text = TextNeeded .. " Walls left to build",
                     Duration = 2.9
                 })
