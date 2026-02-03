@@ -22,7 +22,6 @@ Enums.ItemType = {
 	None = "None";
 	Emote = "Emote";
 }
-return function() -- Line 3
 	local module = {
 		_hitEffectEnergized = {
 			Name = "Energized";
@@ -1941,8 +1940,4 @@ return function() -- Line 3
 			IsStaticPreviewImage = true;
 		};
 	}
-	for i, v in pairs(module) do
-		v.itemID = i
-	end
-	return module
-end
+return module
