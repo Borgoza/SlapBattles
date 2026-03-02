@@ -65,8 +65,8 @@ Run:AddToggle({text = "Enable", flag = "RunEnabled", state = false, callback = f
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.RunArea.One.CFrame + Vector3.new(0, 15, 0)
 			warn("TELEPORTED")
 			task.wait(7)
-			if game.Workspace.celloRoblox07:FindFirstChild("Skull") and game.Workspace.celloRoblox07.Skull:FindFirstChild("Hitbox") then
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.celloRoblox07.Skull.Hitbox.CFrame
+			if game.Workspace.celloRoblox07:FindFirstChild("Skull") and game.Workspace[username].Skull:FindFirstChild("Hitbox") then
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace[username].Skull.Hitbox.CFrame
 			end
 			warn("DIED")
 			wait(6)
